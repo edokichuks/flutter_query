@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_query/grapql_flutter_setup/services/graphql_client.dart';
+import 'package:flutter_query/graphql_setup/services/graphql_client.dart';
+import 'package:flutter_query/graphql_setup/view/graphql_view.dart';
+import 'package:flutter_query/grapql_flutter_setup/services/flutter_graphql_client.dart';
 import 'package:flutter_query/grapql_flutter_setup/view/graphql_view.dart';
 import 'package:flutter_query/providers/fetch_characters_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:  GraphQLView(),
+        home: GraphQLView(),
       ),
     );
   }
@@ -64,7 +66,7 @@ class HomePage extends ConsumerWidget {
               return Center(child: Text(error));
             },
             orElse: () {
-              return Center(child: Text('sth else'));
+              return const Center(child: Text('sth else'));
             },
           ),
     );

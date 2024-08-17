@@ -15,8 +15,15 @@ final ValueNotifier<GraphQLClient> client2 = ValueNotifier(GraphQLClient(
   cache: GraphQLCache(),
 ));
 
-final httpLink = HttpLink("http://10.0.2.2:400/");
+WebSocketLink websocketLink = WebSocketLink(
+  '<YOUR-GRAPHQL-SUBSCRIPTION-ENDPOINT>',
+  config: SocketClientConfig(
+    autoReconnect: true,
+    inactivityTimeout: Duration(seconds: 30),
+  ),
+);
 
-ValueNotifier<GraphQLClient> client1 = ValueNotifier(
-  GraphQLClient(link: httpLink, cache: GraphQLCache()),
+GraphQLClient websocketClient = GraphQLClient(
+  link: websocketLink,
+  cache: GraphQLCache(),
 );
